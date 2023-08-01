@@ -1,0 +1,35 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: backup-service
+  zipkin:
+    base-url: http://localhost:9411/  
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/
+      database: security_backup
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8888/uaa/token_keys      
+eureka:
+  instance:
+    hostname: localhost
+    serviceUrl:
+      defaultZone : http://${eureka.instance.hostname}:8761/eureka/
+feign:
+  circuitbreaker:
+    enabled: true 
+  
+logging:
+  level:
+    root: INFO
+    com.scg.service: TRACE
+    org.springframework.web: INFO
+    org.springframework.web.HttpLogging: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    
+logging.level.*: info  
