@@ -1,1 +1,1 @@
-Spring boot application to backup device.
+Spring boot microservice to backup device.
